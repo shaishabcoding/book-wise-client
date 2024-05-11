@@ -1,6 +1,6 @@
 import { Outlet, useNavigation } from "react-router-dom";
 // import Navbar from "../shared/navbar/Navbar";
-// import Footer from "../shared/footer/Footer";
+import Footer from "../shared/footer/Footer";
 import Loading from "../components/Loading";
 
 const Root = () => {
@@ -14,7 +14,7 @@ const Root = () => {
         {loading && <Loading></Loading>}
         <Outlet></Outlet>
       </div>
-      {/* <Footer></Footer> */}
+      <Footer></Footer>
     </div>
   );
 };

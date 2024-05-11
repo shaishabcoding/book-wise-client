@@ -123,11 +123,17 @@ const NewBook = () => {
               />
             </label>
           </div>
-          <textarea
+          <input
             required
             {...register("description")}
-            className="textarea textarea-bordered w-full h-40 my-4 dark:bg-gray-500 dark:border-gray-400"
+            className="textarea textarea-bordered w-full mt-4 dark:bg-gray-500 dark:border-gray-400"
             placeholder="Enter short description"
+          />
+          <textarea
+            required
+            {...register("long_description")}
+            className="textarea textarea-bordered w-full h-40 my-4 dark:bg-gray-500 dark:border-gray-400"
+            placeholder="Enter Long description"
           ></textarea>
           <button className="btn btn-primary w-full" type="submit">
             Submit

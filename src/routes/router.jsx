@@ -5,6 +5,7 @@ import Login from "../pages/signInUp/Login";
 import Register from "../pages/signInUp/Register";
 import PrivateRoute from "./PrivateRoute";
 import AllBook from "../pages/books/AllBook";
+import Details from "../pages/books/Details";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,16 @@ const router = createBrowserRouter([
       {
         path: "/books/all",
         element: <AllBook></AllBook>,
+      },
+      {
+        path: "/books/:id",
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/books/${params.id}`),
+        element: (
+          <PrivateRoute>
+            <Details></Details>
+          </PrivateRoute>
+        ),
       },
     ],
   },

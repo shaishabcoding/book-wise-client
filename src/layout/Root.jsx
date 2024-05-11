@@ -8,7 +8,7 @@ const Root = () => {
   const loading = navigation.state === "loading";
 
   return (
-    <div className="bg-white dark:bg-black font-open-sans">
+    <div className="bg-white dark:bg-black dark:text-white font-open-sans">
       <div className="lg:px-28 lg:pt-6 ">
         <Navbar></Navbar>
         {loading && <Loading></Loading>}

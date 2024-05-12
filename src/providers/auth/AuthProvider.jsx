@@ -10,6 +10,7 @@ import auth from "../../firebase/firebase.init";
 import PropTypes from "prop-types";
 import { toast } from "react-toastify";
 import { GoogleAuthProvider, GithubAuthProvider } from "firebase/auth";
+import axios from "axios";
 
 export const AuthContext = createContext(null);
 
@@ -33,7 +34,11 @@ const AuthProvider = ({ children }) => {
     setIsLoading(true);
     signInWithEmailAndPassword(auth, email, password)
       .then(() => {
-        callback && callback(user);
+        axios.post("http://localhost:5000/jwt", { email }).then(({ data }) => {
+          if (data.success) {
+            callback && callback(user);
+          }
+        });
       })
       .catch(() => {
         toast.error("Invalid email or password");

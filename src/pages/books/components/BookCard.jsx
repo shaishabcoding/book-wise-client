@@ -1,9 +1,11 @@
+/* eslint-disable react/prop-types */
 import { MdStar, MdStarBorder } from "react-icons/md";
 import Rating from "react-rating";
 import { Link } from "react-router-dom";
 
 const BookCard = ({ book }) => {
-  const { category, image, name, rating, title, description, _id } = book;
+  const { category, image, name, rating, title, description, _id, quantity } =
+    book;
   return (
     <div className="rounded-lg h-full overflow-hidden flex flex-col border dark:border-gray-400 border-gray-200 shadow-sm">
       <div className="relative border-b border-gray-400">
@@ -28,6 +30,7 @@ const BookCard = ({ book }) => {
           {description?.slice(0, 150)}...
         </p>
         <p className="font-bold my-3">Author : {name}</p>
+        <p className="font-bold mb-3">Quantity : {quantity}</p>
         <div className="grid gap-3">
           <Link className="grid w-full" to={`/book/${_id}`}>
             <button className="btn btn-accent btn-sm dark:bg-gray-700 dark:text-white dark:border-gray-400">

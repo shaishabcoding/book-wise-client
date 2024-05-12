@@ -1,31 +1,34 @@
-import { useContext } from "react";
-import { AuthContext } from "../../providers/auth/AuthProvider";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { MdStar, MdStarBorder } from "react-icons/md";
 import Rating from "react-rating";
 import { useState } from "react";
 import axios from "axios";
+import { useLoaderData } from "react-router-dom";
 
 const NewBook = () => {
-  const { user } = useContext(AuthContext);
+  const book = useLoaderData();
+
   const [rating, setRating] = useState(3);
   const { register, handleSubmit, reset } = useForm({
     defaultValues: {
-      email: user?.email,
+      ...book,
     },
   });
 
   const handleFormSubmit = handleSubmit((data) => {
     data.quantity = parseInt(data.quantity);
+    const id = data._id;
+    delete data._id;
+    data.rating = rating;
     axios
-      .post("http://localhost:5000/books/new", { ...data, rating })
+      .put(`http://localhost:5000/book/${id}/edit`, data)
       .then(({ data }) => {
-        if (data.insertedId) {
+        if (data.modifiedCount) {
           reset();
           Swal.fire({
             title: "Success",
-            text: "New Book insert successfully!",
+            text: "Book Update successfully!",
             icon: "success",
             confirmButtonText: "Done",
           });
@@ -35,7 +38,7 @@ const NewBook = () => {
   return (
     <div className="m-4 p-6 lg:mx-0 rounded-lg lg:pb-10 border bg-gradient-to-bl from-green-50  dark:from-gray-700 via-pink-50 dark:via-gray-800 to-sky-50 dark:to-gray-700 dark:text-white dark:border-gray-500">
       <h2 className="text-2xl lg:mt-8 lg:mb-12 lg:text-5xl font-semibold text-center mb-6">
-        Add Book
+        Update Book
       </h2>
       <div className="w-full lg:px-12 mx-auto">
         <form onSubmit={handleFormSubmit}>

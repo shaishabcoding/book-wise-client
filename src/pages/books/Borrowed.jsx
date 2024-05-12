@@ -18,7 +18,7 @@ const Borrowed = () => {
     });
   }, []);
 
-  const handleReturn = (id) => () => {
+  const handleReturn = (id) => {
     axios
       .put(`http://localhost:5000/book/${id}/return`)
       .then(({ data }) => {
@@ -48,11 +48,7 @@ const Borrowed = () => {
       {loading && <Loading />}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mx-4 lg:mx-0">
         {books.map((book, idx) => (
-          <BookCard2
-            key={idx}
-            book={book}
-            handleReturn={handleReturn(book._id)}
-          />
+          <BookCard2 key={idx} book={book} handleReturn={handleReturn} />
         ))}
       </div>
     </div>

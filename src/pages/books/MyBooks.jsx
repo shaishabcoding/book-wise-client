@@ -3,6 +3,8 @@ import { useEffect } from "react";
 import { useState } from "react";
 import BookCard3 from "./components/BookCard3";
 import Loading from "../../components/Loading";
+import Swal from "sweetalert2";
+import { toast } from "react-toastify";
 
 const MyBooks = () => {
   const [books, setBooks] = useState([]);
@@ -16,6 +18,39 @@ const MyBooks = () => {
     });
   }, []);
 
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios
+          .delete(`http://localhost:5000/book/${id}`)
+          .then(({ data }) => {
+            if (data.deletedCount > 0) {
+              Swal.fire({
+                title: "Success",
+                text: "Book delete successfully!",
+                icon: "success",
+                confirmButtonText: "Done",
+              });
+              const newBooks = books.filter((book) => book._id !== id);
+              setBooks(newBooks);
+            }
+          })
+          .catch((err) => {
+            toast.error(err.response.data);
+            console.log(err);
+          });
+      }
+    });
+  };
+
   return (
     <div className="my-8">
       <h2 className="text-xl font-bold md:text-4xl my-8 lg:my-16 text-center dark:text-white">
@@ -24,7 +59,7 @@ const MyBooks = () => {
       {loading && <Loading />}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mx-4 lg:mx-0">
         {books.map((book, idx) => (
-          <BookCard3 key={idx} book={book} />
+          <BookCard3 key={idx} book={book} handleDelete={handleDelete} />
         ))}
       </div>
     </div>

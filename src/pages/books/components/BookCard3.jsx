@@ -3,9 +3,8 @@ import { MdStar, MdStarBorder } from "react-icons/md";
 import Rating from "react-rating";
 import { Link } from "react-router-dom";
 
-const BookCard = ({ book }) => {
+const BookCard = ({ book, handleDelete }) => {
   const { category, image, name, rating, title, _id } = book;
-
   return (
     <div className="rounded-lg h-full overflow-hidden flex flex-col border dark:border-gray-400 border-gray-200 shadow-sm">
       <div className="relative border-b border-gray-400">
@@ -39,6 +38,12 @@ const BookCard = ({ book }) => {
               Update
             </button>
           </Link>
+          <button
+            onClick={() => handleDelete(_id)}
+            className="btn btn-accent btn-sm dark:bg-gray-700 dark:text-white dark:border-gray-400"
+          >
+            Delete
+          </button>
         </div>
       </div>
     </div>

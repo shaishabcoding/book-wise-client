@@ -5,6 +5,7 @@ import axios from "axios";
 import { BsFillGrid3X3GapFill } from "react-icons/bs";
 import { FaTableList } from "react-icons/fa6";
 import BookTable from "./components/BookTable";
+import { Link } from "react-router-dom";
 
 const AllBook = () => {
   const [books, setBooks] = useState([]);
@@ -74,7 +75,15 @@ const AllBook = () => {
         </div>
       </div>
       {loading && <Loading />}
-      {isCardView ? (
+
+      {books.length < 1 ? (
+        <div>
+          No books found.{" "}
+          <Link className="btn btn-xs btn-info" to="/books/new">
+            Add new book
+          </Link>
+        </div>
+      ) : isCardView ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mx-4 lg:mx-0">
           {books.map((book, idx) => (
             <BookCard key={idx} book={book} />

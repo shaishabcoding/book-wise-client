@@ -5,6 +5,7 @@ import BookCard3 from "./components/BookCard3";
 import Loading from "../../components/Loading";
 import Swal from "sweetalert2";
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 
 const MyBooks = () => {
   const [books, setBooks] = useState([]);
@@ -61,6 +62,14 @@ const MyBooks = () => {
         {books.map((book, idx) => (
           <BookCard3 key={idx} book={book} handleDelete={handleDelete} />
         ))}
+        {books.length < 1 && (
+          <div>
+            No books found.{" "}
+            <Link className="btn btn-xs btn-info" to="/books/new">
+              Add new book
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   );

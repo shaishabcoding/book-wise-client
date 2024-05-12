@@ -5,6 +5,7 @@ import Loading from "../../components/Loading";
 import BookCard2 from "./components/BookCard2";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const Borrowed = () => {
   const [books, setBooks] = useState([]);
@@ -50,6 +51,14 @@ const Borrowed = () => {
         {books.map((book, idx) => (
           <BookCard2 key={idx} book={book} handleReturn={handleReturn} />
         ))}
+        {books.length < 1 && (
+          <div>
+            No books found.{" "}
+            <Link className="btn btn-xs btn-info" to="/books/new">
+              Add new book
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   );

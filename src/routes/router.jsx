@@ -11,6 +11,7 @@ import MyBooks from "../pages/books/MyBooks";
 import UpdateBook from "../pages/books/UpdateBook";
 import Error from "../pages/404/Error";
 import Home from "../pages/home/Home";
+import Categories from "../pages/books/Categories";
 
 const router = createBrowserRouter([
   {
@@ -41,6 +42,12 @@ const router = createBrowserRouter([
       {
         path: "/books/all",
         element: <AllBook></AllBook>,
+      },
+      {
+        path: "/books/categories/:category",
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/books/categories/${params.category}`),
+        element: <Categories></Categories>,
       },
       {
         path: "/books/borrowed",

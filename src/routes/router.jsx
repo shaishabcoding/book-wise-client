@@ -9,12 +9,13 @@ import Details from "../pages/books/Details";
 import Borrowed from "../pages/books/Borrowed";
 import MyBooks from "../pages/books/MyBooks";
 import UpdateBook from "../pages/books/UpdateBook";
+import Error from "../pages/404/Error";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
-    // errorElement: <Error></Error>,
+    errorElement: <Error></Error>,
     children: [
       {
         path: "/",

@@ -27,7 +27,7 @@ const BookCard = ({ book }) => {
       <div className="p-3 pb-5 bg-white dark:bg-gray-600 dark:text-white grow flex flex-col">
         <h2 className="text-2xl font-semibold">{title}</h2>
         <p className="mt-2 grow dark:text-gray-300 text-gray-600">
-          {description?.slice(0, 150)}...
+          {description}
         </p>
         <p className="font-bold my-3">Author : {name}</p>
         <p className="font-bold mb-3">Quantity : {quantity}</p>

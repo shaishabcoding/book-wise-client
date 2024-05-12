@@ -17,8 +17,8 @@ const Details = () => {
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
   const { user } = useAuth();
-  const { category, image, name, rating, title, description, _id } = book;
-  const [quantity, setQuantity] = useState(book.quantity);
+  const { category, image, name, rating, title, long_description, _id } = book;
+  const [quantity, setQuantity] = useState(0);
   const [returnDate, setReturnDate] = useState(new Date());
   const { register } = useForm({
     defaultValues: {
@@ -31,6 +31,7 @@ const Details = () => {
     setLoading(true);
     axios.get(`http://localhost:5000/book/${id}`).then(({ data }) => {
       setBook(data);
+      setQuantity(data.quantity);
       setLoading(false);
     });
   }, [id]);
@@ -128,7 +129,7 @@ const Details = () => {
             <div className="p-3 flex-1 pb-5 bg-white dark:bg-gray-600 dark:text-white grow h-full flex flex-col">
               <h2 className="text-2xl font-semibold">{title}</h2>
               <div className="flex flex-col gap-2 mt-3 grow">
-                <p>{description}</p>
+                <p>{long_description}</p>
                 <p>
                   <b>Category : </b>
                   {category}

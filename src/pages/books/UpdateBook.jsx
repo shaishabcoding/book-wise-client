@@ -13,19 +13,23 @@ const UpdateBook = () => {
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
   const [rating, setRating] = useState(4);
-  const { register, handleSubmit, reset, setValue } = useForm();
+  const { register, handleSubmit, setValue } = useForm();
 
   useEffect(() => {
     setLoading(true);
     axios.get(`http://localhost:5000/book/${id}`).then(({ data }) => {
+      console.log(data);
       setLoading(false);
       setRating(data?.rating);
+      setValue("title", data?.title);
       setValue("image", data?.image);
       setValue("name", data?.name);
+      setValue("email", data?.email);
       setValue("quantity", data?.quantity);
       setValue("category", data?.category);
       setValue("description", data?.description);
       setValue("long_description", data?.long_description);
+      setValue("_id", data?._id);
     });
   }, [id]);
 
@@ -38,7 +42,6 @@ const UpdateBook = () => {
       .put(`http://localhost:5000/book/${id}/edit`, data)
       .then(({ data }) => {
         if (data.modifiedCount) {
-          reset();
           Swal.fire({
             title: "Success",
             text: "Book Update successfully!",

@@ -10,15 +10,11 @@ import { FaLocationArrow } from "react-icons/fa";
 
 const Banner = () => {
   const images = [
-    "https://i.ibb.co/zNnhvyh/Luxury-Beach-Resort.png",
-    "https://i.ibb.co/cg56RgP/Cozy-Mountain-Lodge.png",
-    "https://i.ibb.co/SNWbsGF/Charming-Guesthouse-in-the-Countryside.png",
-    "https://i.ibb.co/2cSxLLj/Ski-Chalet-Vacation-Rental.png",
-    "https://i.ibb.co/hdM3V6g/Grand-Hotel-Downtown.png",
-    "https://i.ibb.co/PZwRd3K/Riverside-Motel.png",
-    "https://i.ibb.co/BVFsTcy/Seaside-Vacation-House.png",
-    "https://i.ibb.co/wBSf4yW/Mountain-Retreat-Resort.png",
-    "https://i.ibb.co/Jr9cnVf/Coastal-Cottage.png",
+    "https://i.ibb.co/LnG8p9d/The-Catcher-in-the-Rye.jpg",
+    "https://i.ibb.co/0JjBcZT/The-Great-Gatsby.jpg",
+    "https://i.ibb.co/DbPDd0Y/To-Kill-a-Mockingbird.jpg",
+    "https://i.ibb.co/Pg4F2gG/1984.jpg",
+    "https://i.ibb.co/JRRZK27/The-Hobbit.jpg",
   ];
   return (
     <div className="hero min-h-screen my-1 lg:rounded-lg lg:my-10 md:py-10 bg-gradient-to-bl from-green-50  dark:from-gray-700 via-pink-50 dark:via-gray-800 to-sky-50 dark:to-gray-700 dark:text-white dark:border-gray-500">

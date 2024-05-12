@@ -9,6 +9,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { AuthContext } from "../../providers/auth/AuthProvider";
+import { toast } from "react-toastify";
 
 const Details = () => {
   const book = useLoaderData();
@@ -40,7 +41,10 @@ const Details = () => {
           });
           setQuantity(quantity - 1);
         }
-        console.log(data);
+      })
+      .catch((err) => {
+        toast.error(err.response.data);
+        console.log(err);
       });
   };
 

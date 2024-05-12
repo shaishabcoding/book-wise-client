@@ -50,6 +50,9 @@ importers:
       sweetalert2:
         specifier: ^11.11.0
         version: 11.11.0
+      swiper:
+        specifier: ^11.1.1
+        version: 11.1.1
     devDependencies:
       '@types/react':
         specifier: ^18.2.66
@@ -1981,6 +1984,10 @@ packages:
 
   sweetalert2@11.11.0:
     resolution: {integrity: sha512-wKCTtoE6lQVDKaJ5FFq+znk/YykJmJlD8RnLZps8C7DyivctCoRlVeeOwnKfgwKS+QJYon7s++3dmNi3/am1tw==}
+
+  swiper@11.1.1:
+    resolution: {integrity: sha512-jGmEA/fNz1lACIcY4/40ggm1Gcyv+EUivmgV/Jd2WFPsEJhbWXnRAwzZR8OPjkBLtDxmzcoYG/iiAMWfRs0YKQ==}
+    engines: {node: '>= 4.7.0'}
 
   tabbable@6.2.0:
     resolution: {integrity: sha512-Cat63mxsVJlzYvN51JmVXIgNoUokrIaT2zLclCXjRd8boZ0004U4KCs/sToJ75C6sdlByWxpYnb5Boif1VSFew==}
@@ -4332,6 +4339,8 @@ snapshots:
   supports-preserve-symlinks-flag@1.0.0: {}
 
   sweetalert2@11.11.0: {}
+
+  swiper@11.1.1: {}
 
   tabbable@6.2.0: {}
 

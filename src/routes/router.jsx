@@ -10,6 +10,7 @@ import Borrowed from "../pages/books/Borrowed";
 import MyBooks from "../pages/books/MyBooks";
 import UpdateBook from "../pages/books/UpdateBook";
 import Error from "../pages/404/Error";
+import Home from "../pages/home/Home";
 
 const router = createBrowserRouter([
   {
@@ -19,7 +20,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <p>hello</p>,
+        element: <Home></Home>,
       },
       {
         path: "/register",
@@ -43,11 +44,19 @@ const router = createBrowserRouter([
       },
       {
         path: "/books/borrowed",
-        element: <Borrowed></Borrowed>,
+        element: (
+          <PrivateRoute>
+            <Borrowed></Borrowed>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/books/my",
-        element: <MyBooks></MyBooks>,
+        element: (
+          <PrivateRoute>
+            <MyBooks></MyBooks>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/book/:id",

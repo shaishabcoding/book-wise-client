@@ -1,12 +1,28 @@
 import { MdStar, MdStarBorder } from "react-icons/md";
 import Rating from "react-rating";
 import { useLoaderData } from "react-router-dom";
+import axios from "axios";
+import Swal from "sweetalert2";
+import { useState } from "react";
 
 const Details = () => {
   const book = useLoaderData();
   const { category, image, name, rating, title, description, _id } = book;
+  const [quantity, setQuantity] = useState(book.quantity);
 
-  const handleBorrow = () => {};
+  const handleBorrow = () => {
+    axios.put(`http://localhost:5000/book/${_id}/borrow`).then(({ data }) => {
+      if (data.modifiedCount > 0) {
+        Swal.fire({
+          title: "Success",
+          text: "Book borrowed successfully!",
+          icon: "success",
+          confirmButtonText: "Done",
+        });
+        setQuantity(quantity - 1);
+      }
+    });
+  };
 
   return (
     <div className="m-4 mt-8">
@@ -28,6 +44,10 @@ const Details = () => {
                 {category}
               </p>
               <p>
+                <b>Quantity : </b>
+                {quantity}
+              </p>
+              <p>
                 <b>Rating :</b>
                 <Rating
                   className="translate-y-1"
@@ -42,6 +62,7 @@ const Details = () => {
               </p>
             </div>
             <button
+              disabled={quantity < 1}
               onClick={handleBorrow}
               className="btn btn-primary mt-4 dark:bg-blue-500"
             >

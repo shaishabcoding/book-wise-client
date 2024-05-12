@@ -13,15 +13,17 @@ const Borrowed = () => {
 
   useEffect(() => {
     setLoading(true);
-    axios.get("http://localhost:5000/books/borrowed").then(({ data }) => {
-      setBooks(data);
-      setLoading(false);
-    });
+    axios
+      .get("https://book-wise-316.vercel.app/books/borrowed")
+      .then(({ data }) => {
+        setBooks(data);
+        setLoading(false);
+      });
   }, []);
 
   const handleReturn = (id) => {
     axios
-      .put(`http://localhost:5000/book/${id}/return`)
+      .put(`https://book-wise-316.vercel.app/book/${id}/return`)
       .then(({ data }) => {
         if (data.success) {
           Swal.fire({
@@ -36,11 +38,9 @@ const Borrowed = () => {
       })
       .catch((err) => {
         toast.error(err.response.data);
-        console.log(err);
       });
   };
 
-  console.log(books);
   return (
     <div className="my-8">
       <h2 className="text-xl font-bold md:text-4xl my-8 lg:my-16 text-center dark:text-white">

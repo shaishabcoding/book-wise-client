@@ -17,20 +17,21 @@ const UpdateBook = () => {
 
   useEffect(() => {
     setLoading(true);
-    axios.get(`http://localhost:5000/book/${id}`).then(({ data }) => {
-      console.log(data);
-      setLoading(false);
-      setRating(data?.rating);
-      setValue("title", data?.title);
-      setValue("image", data?.image);
-      setValue("name", data?.name);
-      setValue("email", data?.email);
-      setValue("quantity", data?.quantity);
-      setValue("category", data?.category);
-      setValue("description", data?.description);
-      setValue("long_description", data?.long_description);
-      setValue("_id", data?._id);
-    });
+    axios
+      .get(`https://book-wise-316.vercel.app/book/${id}`)
+      .then(({ data }) => {
+        setLoading(false);
+        setRating(data?.rating);
+        setValue("title", data?.title);
+        setValue("image", data?.image);
+        setValue("name", data?.name);
+        setValue("email", data?.email);
+        setValue("quantity", data?.quantity);
+        setValue("category", data?.category);
+        setValue("description", data?.description);
+        setValue("long_description", data?.long_description);
+        setValue("_id", data?._id);
+      });
   }, [id]);
 
   const handleFormSubmit = handleSubmit((data) => {
@@ -39,7 +40,7 @@ const UpdateBook = () => {
     delete data._id;
     data.rating = rating;
     axios
-      .put(`http://localhost:5000/book/${id}/edit`, data)
+      .put(`https://book-wise-316.vercel.app/book/${id}/edit`, data)
       .then(({ data }) => {
         if (data.modifiedCount) {
           Swal.fire({
@@ -52,7 +53,6 @@ const UpdateBook = () => {
       })
       .catch((err) => {
         toast.error(err.response.data);
-        console.log(err);
       });
   });
   return (

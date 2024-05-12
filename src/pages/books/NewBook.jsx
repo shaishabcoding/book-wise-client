@@ -19,7 +19,7 @@ const NewBook = () => {
   const handleFormSubmit = handleSubmit((data) => {
     data.quantity = parseInt(data.quantity);
     axios
-      .post("http://localhost:5000/books/new", { ...data, rating })
+      .post("https://book-wise-316.vercel.app/books/new", { ...data, rating })
       .then(({ data }) => {
         if (data.insertedId) {
           reset();
@@ -33,7 +33,6 @@ const NewBook = () => {
       })
       .catch((err) => {
         toast.error(err.response.data);
-        console.log(err);
       });
   });
   return (

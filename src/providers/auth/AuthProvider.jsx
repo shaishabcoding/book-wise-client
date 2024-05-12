@@ -26,11 +26,13 @@ const AuthProvider = ({ children }) => {
         displayName: name,
         photoURL: image,
       }).then(() => {
-        axios.post("http://localhost:5000/jwt", { email }).then(({ data }) => {
-          if (data.success) {
-            callback && callback(user);
-          }
-        });
+        axios
+          .post("https://book-wise-316.vercel.app/jwt", { email })
+          .then(({ data }) => {
+            if (data.success) {
+              callback && callback(user);
+            }
+          });
       });
     });
   };
@@ -38,11 +40,13 @@ const AuthProvider = ({ children }) => {
     setIsLoading(true);
     signInWithEmailAndPassword(auth, email, password)
       .then(() => {
-        axios.post("http://localhost:5000/jwt", { email }).then(({ data }) => {
-          if (data.success) {
-            callback && callback(user);
-          }
-        });
+        axios
+          .post("https://book-wise-316.vercel.app/jwt", { email })
+          .then(({ data }) => {
+            if (data.success) {
+              callback && callback(user);
+            }
+          });
       })
       .catch(() => {
         toast.error("Invalid email or password");
@@ -52,7 +56,7 @@ const AuthProvider = ({ children }) => {
     setIsLoading(true);
     try {
       auth.signOut().then(() => {
-        axios.post("http://localhost:5000/logout").then(() => {
+        axios.post("https://book-wise-316.vercel.app/logout").then(() => {
           toast.success("logout successfully");
         });
       });
@@ -71,7 +75,7 @@ const AuthProvider = ({ children }) => {
     signInWithPopup(auth, provider)
       .then(({ user }) => {
         axios
-          .post("http://localhost:5000/jwt", { email: user.email })
+          .post("https://book-wise-316.vercel.app/jwt", { email: user.email })
           .then(({ data }) => {
             if (data.success) {
               callback && callback(user);

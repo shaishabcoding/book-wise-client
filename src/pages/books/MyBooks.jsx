@@ -13,7 +13,7 @@ const MyBooks = () => {
 
   useEffect(() => {
     setLoading(true);
-    axios.get("http://localhost:5000/books/my").then(({ data }) => {
+    axios.get("https://book-wise-316.vercel.app/books/my").then(({ data }) => {
       setBooks(data);
       setLoading(false);
     });
@@ -31,7 +31,7 @@ const MyBooks = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`http://localhost:5000/book/${email}/${id}`)
+          .delete(`https://book-wise-316.vercel.app/book/${email}/${id}`)
           .then(({ data }) => {
             if (data.deletedCount > 0) {
               Swal.fire({
@@ -46,7 +46,6 @@ const MyBooks = () => {
           })
           .catch((err) => {
             toast.error(err.response.data);
-            console.log(err);
           });
       }
     });

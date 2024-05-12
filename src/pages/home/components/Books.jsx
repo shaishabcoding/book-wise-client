@@ -11,10 +11,12 @@ const Books = () => {
 
   useEffect(() => {
     setLoading(true);
-    axios.get("http://localhost:5000/books/popular").then(({ data }) => {
-      setBooks(data);
-      setLoading(false);
-    });
+    axios
+      .get("https://book-wise-316.vercel.app/books/popular")
+      .then(({ data }) => {
+        setBooks(data);
+        setLoading(false);
+      });
   }, []);
 
   return (

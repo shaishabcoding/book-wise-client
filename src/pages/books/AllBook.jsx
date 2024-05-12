@@ -16,7 +16,7 @@ const AllBook = () => {
 
   useEffect(() => {
     setLoading(true);
-    axios.get("http://localhost:5000/books").then(({ data }) => {
+    axios.get("https://book-wise-316.vercel.app/books").then(({ data }) => {
       setBooks(data);
       setAllBook(data);
       setLoading(false);

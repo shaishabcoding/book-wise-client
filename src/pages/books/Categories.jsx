@@ -14,7 +14,7 @@ const Categories = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`http://localhost:5000/books/categories/${category}`)
+      .get(`https://book-wise-316.vercel.app/books/categories/${category}`)
       .then(({ data }) => {
         setBooks(data);
         setLoading(false);

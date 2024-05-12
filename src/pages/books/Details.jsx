@@ -29,16 +29,18 @@ const Details = () => {
 
   useEffect(() => {
     setLoading(true);
-    axios.get(`http://localhost:5000/book/${id}`).then(({ data }) => {
-      setBook(data);
-      setQuantity(data.quantity);
-      setLoading(false);
-    });
+    axios
+      .get(`https://book-wise-316.vercel.app/book/${id}`)
+      .then(({ data }) => {
+        setBook(data);
+        setQuantity(data.quantity);
+        setLoading(false);
+      });
   }, [id]);
 
   const handleBorrow = () => {
     axios
-      .put(`http://localhost:5000/book/${_id}/borrow`, {
+      .put(`https://book-wise-316.vercel.app/book/${_id}/borrow`, {
         returnDate: returnDate.toLocaleDateString("en-US"),
         email: user?.email,
         name: user?.displayName,
@@ -56,7 +58,6 @@ const Details = () => {
       })
       .catch((err) => {
         toast.error(err.response.data);
-        console.log(err);
       });
   };
 

@@ -6,6 +6,7 @@ import { MdStar, MdStarBorder } from "react-icons/md";
 import Rating from "react-rating";
 import { useState } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const NewBook = () => {
   const { user } = useContext(AuthContext);
@@ -30,6 +31,10 @@ const NewBook = () => {
             confirmButtonText: "Done",
           });
         }
+      })
+      .catch((err) => {
+        toast.error(err.response.data);
+        console.log(err);
       });
   });
   return (

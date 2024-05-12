@@ -4,7 +4,7 @@ import Rating from "react-rating";
 import { Link } from "react-router-dom";
 
 const BookCard = ({ book, handleDelete }) => {
-  const { category, image, name, rating, title, _id } = book;
+  const { category, image, name, rating, title, _id, email } = book;
   return (
     <div className="rounded-lg h-full overflow-hidden flex flex-col border dark:border-gray-400 border-gray-200 shadow-sm">
       <div className="relative border-b border-gray-400">
@@ -39,7 +39,7 @@ const BookCard = ({ book, handleDelete }) => {
             </button>
           </Link>
           <button
-            onClick={() => handleDelete(_id)}
+            onClick={() => handleDelete(_id, email)}
             className="btn btn-accent btn-sm dark:bg-gray-700 dark:text-white dark:border-gray-400"
           >
             Delete

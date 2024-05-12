@@ -5,6 +5,7 @@ import Rating from "react-rating";
 import { useState } from "react";
 import axios from "axios";
 import { useLoaderData } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const NewBook = () => {
   const book = useLoaderData();
@@ -33,6 +34,10 @@ const NewBook = () => {
             confirmButtonText: "Done",
           });
         }
+      })
+      .catch((err) => {
+        toast.error(err.response.data);
+        console.log(err);
       });
   });
   return (

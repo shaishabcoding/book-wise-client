@@ -18,7 +18,7 @@ const MyBooks = () => {
     });
   }, []);
 
-  const handleDelete = (id) => {
+  const handleDelete = (id, email) => {
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -30,7 +30,7 @@ const MyBooks = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`http://localhost:5000/book/${id}`)
+          .delete(`http://localhost:5000/book/${email}/${id}`)
           .then(({ data }) => {
             if (data.deletedCount > 0) {
               Swal.fire({

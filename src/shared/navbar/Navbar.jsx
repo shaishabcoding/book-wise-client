@@ -1,12 +1,12 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { HiOutlineLogout } from "react-icons/hi";
 import { FiLogIn } from "react-icons/fi";
-import { AuthContext } from "../../providers/auth/AuthProvider";
 import { CiDark, CiLight } from "react-icons/ci";
+import useAuth from "../../hooks/useAuth";
 
 const Navbar = () => {
-  const { user, logOut } = useContext(AuthContext);
+  const { user, logOut } = useAuth();
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   useEffect(() => {
@@ -28,18 +28,22 @@ const Navbar = () => {
       <li>
         <NavLink to="/">Home</NavLink>
       </li>
-      <li>
-        <NavLink to="/books/new">Add Book</NavLink>
-      </li>
-      <li>
-        <NavLink to="/books/all">All Book</NavLink>
-      </li>
-      <li>
-        <NavLink to="/books/borrowed">Borrowed Books</NavLink>
-      </li>
-      <li>
-        <NavLink to="/books/my">My Books</NavLink>
-      </li>
+      {user && (
+        <>
+          <li>
+            <NavLink to="/books/new">Add Book</NavLink>
+          </li>
+          <li>
+            <NavLink to="/books/all">All Book</NavLink>
+          </li>
+          <li>
+            <NavLink to="/books/borrowed">Borrowed Books</NavLink>
+          </li>
+          <li>
+            <NavLink to="/books/my">My Books</NavLink>
+          </li>
+        </>
+      )}
     </>
   );
   return (

@@ -41,13 +41,19 @@ const router = createBrowserRouter([
       },
       {
         path: "/books/all",
-        element: <AllBook></AllBook>,
+        element: (
+          <PrivateRoute>
+            <AllBook></AllBook>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/books/categories/:category",
-        loader: ({ params }) =>
-          fetch(`http://localhost:5000/books/categories/${params.category}`),
-        element: <Categories></Categories>,
+        element: (
+          <PrivateRoute>
+            <Categories></Categories>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/books/borrowed",
@@ -67,8 +73,6 @@ const router = createBrowserRouter([
       },
       {
         path: "/book/:id",
-        loader: ({ params }) =>
-          fetch(`http://localhost:5000/book/${params.id}`),
         element: (
           <PrivateRoute>
             <Details></Details>
@@ -77,8 +81,6 @@ const router = createBrowserRouter([
       },
       {
         path: "/book/:id/edit",
-        loader: ({ params }) =>
-          fetch(`http://localhost:5000/book/${params.id}`),
         element: (
           <PrivateRoute>
             <UpdateBook></UpdateBook>

@@ -53,8 +53,8 @@ const Borrowed = () => {
           {books.length < 1 ? (
             <div>
               No books found.{" "}
-              <Link className="btn btn-xs btn-info" to="/books/new">
-                Add new book
+              <Link className="btn btn-xs btn-info" to="/books/all">
+                Borrow a book
               </Link>
             </div>
           ) : (

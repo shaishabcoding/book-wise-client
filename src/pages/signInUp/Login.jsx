@@ -1,16 +1,16 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { AuthContext } from "../../providers/auth/AuthProvider";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import { FiLogIn } from "react-icons/fi";
+import useAuth from "../../hooks/useAuth";
 
 const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { logIn, googleSignUp, githubSignUp } = useContext(AuthContext);
+  const { logIn, googleSignUp, githubSignUp } = useAuth();
   const [isShowPass, setIsShowPass] = useState(false);
   const { register, handleSubmit } = useForm();
 

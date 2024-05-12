@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import imgHolder from "../../assets/icons/image-placeholder.jpg";
@@ -6,12 +6,12 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { BiUserPlus } from "react-icons/bi";
 import testUsers from "../../assets/json/testUsers.json";
-import { AuthContext } from "../../providers/auth/AuthProvider";
+import useAuth from "../../hooks/useAuth";
 
 const Register = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { createUser } = useContext(AuthContext);
+  const { createUser } = useAuth();
   const [isShowPass, setIsShowPass] = useState(false);
   const [image, setImage] = useState("");
   const { register, handleSubmit } = useForm();

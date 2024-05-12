@@ -1,5 +1,3 @@
-import { useContext } from "react";
-import { AuthContext } from "../../providers/auth/AuthProvider";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { MdStar, MdStarBorder } from "react-icons/md";
@@ -7,9 +5,10 @@ import Rating from "react-rating";
 import { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
+import useAuth from "../../hooks/useAuth";
 
 const NewBook = () => {
-  const { user } = useContext(AuthContext);
+  const { user } = useAuth();
   const [rating, setRating] = useState(3);
   const { register, handleSubmit, reset } = useForm({
     defaultValues: {

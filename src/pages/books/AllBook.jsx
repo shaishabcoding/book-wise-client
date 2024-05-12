@@ -74,9 +74,9 @@ const AllBook = () => {
           </button>
         </div>
       </div>
-      {loading && <Loading />}
-
-      {books.length < 1 ? (
+      {loading ? (
+        <Loading />
+      ) : books.length < 1 ? (
         <div>
           No books found.{" "}
           <Link className="btn btn-xs btn-info" to="/books/new">

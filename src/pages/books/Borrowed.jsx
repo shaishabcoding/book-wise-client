@@ -46,20 +46,24 @@ const Borrowed = () => {
       <h2 className="text-xl font-bold md:text-4xl my-8 lg:my-16 text-center dark:text-white">
         Borrowed Books
       </h2>
-      {loading && <Loading />}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mx-4 lg:mx-0">
-        {books.map((book, idx) => (
-          <BookCard2 key={idx} book={book} handleReturn={handleReturn} />
-        ))}
-        {books.length < 1 && (
-          <div>
-            No books found.{" "}
-            <Link className="btn btn-xs btn-info" to="/books/new">
-              Add new book
-            </Link>
-          </div>
-        )}
-      </div>
+      {loading ? (
+        <Loading />
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mx-4 lg:mx-0">
+          {books.length < 1 ? (
+            <div>
+              No books found.{" "}
+              <Link className="btn btn-xs btn-info" to="/books/new">
+                Add new book
+              </Link>
+            </div>
+          ) : (
+            books.map((book, idx) => (
+              <BookCard2 key={idx} book={book} handleReturn={handleReturn} />
+            ))
+          )}
+        </div>
+      )}
     </div>
   );
 };

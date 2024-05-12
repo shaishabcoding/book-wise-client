@@ -15,7 +15,6 @@ const AllBook = () => {
     });
   }, []);
 
-  console.log(books);
   return (
     <div className="my-8">
       <h2 className="text-xl font-bold md:text-4xl my-8 lg:my-16 text-center dark:text-white">

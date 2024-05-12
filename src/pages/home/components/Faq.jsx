@@ -38,7 +38,7 @@ const Faq = () => {
   ];
 
   return (
-    <div className="px-4 lg:px-0">
+    <div className="px-4 lg:px-0 mb-4 md:mb-10">
       <h2 className="text-xl font-bold md:text-4xl my-8 lg:my-16 text-center dark:text-white">
         FAQ
       </h2>

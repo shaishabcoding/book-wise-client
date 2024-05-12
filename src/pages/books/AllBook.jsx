@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import BookCard from "./components/BookCard";
 import Loading from "../../components/Loading";
+import axios from "axios";
 
 const AllBook = () => {
   const [books, setBooks] = useState([]);
@@ -8,12 +9,10 @@ const AllBook = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch("http://localhost:5000/books")
-      .then((res) => res.json())
-      .then((data) => {
-        setBooks(data);
-        setLoading(false);
-      });
+    axios.get("http://localhost:5000/books").then(({ data }) => {
+      setBooks(data);
+      setLoading(false);
+    });
   }, []);
 
   console.log(books);

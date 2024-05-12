@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import { MdStar, MdStarBorder } from "react-icons/md";
 import Rating from "react-rating";
 import { useState } from "react";
+import axios from "axios";
 
 const NewBook = () => {
   const { user } = useContext(AuthContext);
@@ -19,15 +20,9 @@ const NewBook = () => {
 
   const handleFormSubmit = handleSubmit((data) => {
     data.quantity = parseInt(data.quantity);
-    fetch("http://localhost:5000/books/new", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({ ...data, rating }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
+    axios
+      .post("http://localhost:5000/books/new", { ...data, rating })
+      .then(({ data }) => {
         if (data.insertedId) {
           reset();
           Swal.fire({
@@ -38,8 +33,6 @@ const NewBook = () => {
           });
         }
       });
-
-    console.log({ ...data, rating });
   });
   return (
     <div className="m-4 p-6 lg:mx-0 rounded-lg lg:pb-10 border bg-gradient-to-bl from-green-50  dark:from-gray-700 via-pink-50 dark:via-gray-800 to-sky-50 dark:to-gray-700 dark:text-white dark:border-gray-500">

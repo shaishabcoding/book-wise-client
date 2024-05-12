@@ -34,6 +34,9 @@ const Navbar = () => {
       <li>
         <NavLink to="/books/all">All Book</NavLink>
       </li>
+      <li>
+        <NavLink to="/books/borrowed">ABorrowed Books</NavLink>
+      </li>
     </>
   );
   return (

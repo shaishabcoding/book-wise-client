@@ -6,6 +6,7 @@ import Register from "../pages/signInUp/Register";
 import PrivateRoute from "./PrivateRoute";
 import AllBook from "../pages/books/AllBook";
 import Details from "../pages/books/Details";
+import Borrowed from "../pages/books/Borrowed";
 
 const router = createBrowserRouter([
   {
@@ -38,9 +39,13 @@ const router = createBrowserRouter([
         element: <AllBook></AllBook>,
       },
       {
-        path: "/books/:id",
+        path: "/books/borrowed",
+        element: <Borrowed></Borrowed>,
+      },
+      {
+        path: "/book/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/books/${params.id}`),
+          fetch(`http://localhost:5000/book/${params.id}`),
         element: (
           <PrivateRoute>
             <Details></Details>

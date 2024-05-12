@@ -29,7 +29,7 @@ const BookCard = ({ book }) => {
         </p>
         <p className="font-bold my-3">Author : {name}</p>
         <div className="grid gap-3">
-          <Link className="grid w-full" to={`/books/${_id}`}>
+          <Link className="grid w-full" to={`/book/${_id}`}>
             <button className="btn btn-accent btn-sm dark:bg-gray-700 dark:text-white dark:border-gray-400">
               View Details
             </button>

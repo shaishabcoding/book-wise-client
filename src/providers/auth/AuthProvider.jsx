@@ -26,7 +26,11 @@ const AuthProvider = ({ children }) => {
         displayName: name,
         photoURL: image,
       }).then(() => {
-        callback && callback(user);
+        axios.post("http://localhost:5000/jwt", { email }).then(({ data }) => {
+          if (data.success) {
+            callback && callback(user);
+          }
+        });
       });
     });
   };
@@ -46,7 +50,15 @@ const AuthProvider = ({ children }) => {
   };
   const logOut = () => {
     setIsLoading(true);
-    auth.signOut();
+    try {
+      auth.signOut().then(() => {
+        axios.post("http://localhost:5000/logout").then(() => {
+          toast.success("logout successfully");
+        });
+      });
+    } catch (err) {
+      toast.error(err);
+    }
   };
 
   const update = ({ name, image }) =>
@@ -58,7 +70,13 @@ const AuthProvider = ({ children }) => {
   const signUp = (provider, callback = null) => {
     signInWithPopup(auth, provider)
       .then(({ user }) => {
-        callback && callback(user);
+        axios
+          .post("http://localhost:5000/jwt", { email: user.email })
+          .then(({ data }) => {
+            if (data.success) {
+              callback && callback(user);
+            }
+          });
       })
       .catch(({ message }) => {
         toast.error(message);

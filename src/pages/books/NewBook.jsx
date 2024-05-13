@@ -1,6 +1,10 @@
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
-import { MdStar, MdStarBorder } from "react-icons/md";
+import {
+  MdOutlineDriveFileRenameOutline,
+  MdStar,
+  MdStarBorder,
+} from "react-icons/md";
 import Rating from "react-rating";
 import { useState } from "react";
 import axios from "axios";
@@ -130,7 +134,7 @@ const NewBook = () => {
             placeholder="Enter Long description"
           ></textarea>
           <button className="btn btn-primary w-full" type="submit">
-            Submit
+            Create <MdOutlineDriveFileRenameOutline />
           </button>
         </form>
       </div>

@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { MdStar, MdStarBorder } from "react-icons/md";
+import { TbListDetails } from "react-icons/tb";
 import Rating from "react-rating";
 import { Link } from "react-router-dom";
 
@@ -34,7 +35,7 @@ const BookCard = ({ book }) => {
         <div className="grid gap-3">
           <Link className="grid w-full" to={`/book/${_id}`}>
             <button className="btn btn-accent btn-sm dark:bg-gray-700 dark:text-white dark:border-gray-400">
-              View Details
+              View Details <TbListDetails />
             </button>
           </Link>
         </div>

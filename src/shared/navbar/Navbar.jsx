@@ -28,7 +28,7 @@ const Navbar = () => {
       <li>
         <NavLink to="/">Home</NavLink>
       </li>
-      {user && (
+      {user ? (
         <>
           <li>
             <NavLink to="/books/new">Add Book</NavLink>
@@ -42,6 +42,25 @@ const Navbar = () => {
           <li>
             <NavLink to="/books/my">My Books</NavLink>
           </li>
+          <li className="md:hidden mt-2">
+            <button
+              className="btn btn-sm text-xs p-0 bg-white dark:bg-gray-500 dark:border-gray-400 dark:text-white"
+              onClick={logOut}
+            >
+              Logout <HiOutlineLogout />
+            </button>
+          </li>
+        </>
+      ) : (
+        <>
+          <div className="md:hidden">
+            <li>
+              <NavLink to="/login">Login</NavLink>
+            </li>
+            <li>
+              <NavLink to="/register">Register</NavLink>
+            </li>
+          </div>
         </>
       )}
     </>

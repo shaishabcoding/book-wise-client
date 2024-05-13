@@ -1,4 +1,9 @@
-import { MdStar, MdStarBorder } from "react-icons/md";
+import {
+  MdOutlineFileDownloadDone,
+  MdShoppingCart,
+  MdStar,
+  MdStarBorder,
+} from "react-icons/md";
 import Rating from "react-rating";
 import { useParams } from "react-router-dom";
 import axios from "axios";
@@ -108,7 +113,7 @@ const Details = () => {
                   onClick={handleBorrow}
                   className="btn btn-primary w-full dark:bg-blue-500"
                 >
-                  Confirm
+                  Confirm <MdOutlineFileDownloadDone />
                 </button>
               </form>
             </div>
@@ -160,7 +165,7 @@ const Details = () => {
                 }
                 className="btn btn-primary mt-4 dark:bg-blue-500"
               >
-                Borrow
+                Borrow <MdShoppingCart />
               </button>
             </div>
           </div>

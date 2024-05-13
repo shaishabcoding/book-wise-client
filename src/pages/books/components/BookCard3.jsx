@@ -1,5 +1,11 @@
 /* eslint-disable react/prop-types */
-import { MdStar, MdStarBorder } from "react-icons/md";
+import {
+  MdOutlineDriveFileRenameOutline,
+  MdStar,
+  MdStarBorder,
+} from "react-icons/md";
+import { RiDeleteBin6Line } from "react-icons/ri";
+import { TbListDetails } from "react-icons/tb";
 import Rating from "react-rating";
 import { Link } from "react-router-dom";
 
@@ -30,19 +36,19 @@ const BookCard = ({ book, handleDelete }) => {
         <div className="grid gap-3">
           <Link className="grid w-full" to={`/book/${_id}`}>
             <button className="btn btn-accent btn-sm dark:bg-gray-700 dark:text-white dark:border-gray-400">
-              View Details
+              View Details <TbListDetails />
             </button>
           </Link>
           <Link className="grid w-full" to={`/book/${_id}/edit`}>
-            <button className="btn btn-accent btn-sm dark:bg-gray-700 dark:text-white dark:border-gray-400">
-              Update
+            <button className="btn btn-info btn-sm dark:bg-gray-700 dark:text-white dark:border-gray-400">
+              Update <MdOutlineDriveFileRenameOutline />
             </button>
           </Link>
           <button
             onClick={() => handleDelete(_id, email)}
-            className="btn btn-accent btn-sm dark:bg-gray-700 dark:text-white dark:border-gray-400"
+            className="btn btn-error btn-sm dark:bg-gray-700 dark:text-white dark:border-gray-400"
           >
-            Delete
+            Delete <RiDeleteBin6Line />
           </button>
         </div>
       </div>

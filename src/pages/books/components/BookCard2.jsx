@@ -1,5 +1,7 @@
 /* eslint-disable react/prop-types */
 import { MdStar, MdStarBorder } from "react-icons/md";
+import { RiArrowGoBackLine } from "react-icons/ri";
+import { TbListDetails } from "react-icons/tb";
 import Rating from "react-rating";
 import { Link } from "react-router-dom";
 
@@ -34,14 +36,14 @@ const BookCard = ({ book, handleReturn }) => {
         <div className="grid gap-3">
           <Link className="grid w-full" to={`/book/${_id}`}>
             <button className="btn btn-accent btn-sm dark:bg-gray-700 dark:text-white dark:border-gray-400">
-              View Details
+              View Details <TbListDetails />
             </button>
           </Link>
           <button
             onClick={() => handleReturn(_id)}
-            className="btn btn-accent btn-sm dark:bg-gray-700 dark:text-white dark:border-gray-400"
+            className="btn btn-info btn-sm dark:bg-gray-700 dark:text-white dark:border-gray-400"
           >
-            Return
+            Return <RiArrowGoBackLine />
           </button>
         </div>
       </div>

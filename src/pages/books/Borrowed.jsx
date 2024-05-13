@@ -22,23 +22,35 @@ const Borrowed = () => {
   }, []);
 
   const handleReturn = (id) => {
-    axios
-      .put(`https://book-wise-316.vercel.app/book/${id}/return`)
-      .then(({ data }) => {
-        if (data.success) {
-          Swal.fire({
-            title: "Success",
-            text: "Book return successfully!",
-            icon: "success",
-            confirmButtonText: "Done",
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, return it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios
+          .put(`https://book-wise-316.vercel.app/book/${id}/return`)
+          .then(({ data }) => {
+            if (data.success) {
+              Swal.fire({
+                title: "Success",
+                text: "Book return successfully!",
+                icon: "success",
+                confirmButtonText: "Done",
+              });
+              const newBooks = books.filter((book) => book._id !== id);
+              setBooks(newBooks);
+            }
+          })
+          .catch((err) => {
+            toast.error(err.response.data);
           });
-          const newBooks = books.filter((book) => book._id !== id);
-          setBooks(newBooks);
-        }
-      })
-      .catch((err) => {
-        toast.error(err.response.data);
-      });
+      }
+    });
   };
 
   return (

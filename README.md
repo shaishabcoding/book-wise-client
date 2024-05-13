@@ -10,6 +10,10 @@ Visit the live site: [BookWise](https://book-wise-316.web.app/)
 
 BookWise offers a virtual haven for book enthusiasts, where the homepage greets visitors with an inviting array of literary wonders. Here, vibrant images of bestsellers, classic novels, and niche reads adorn the screen, alongside enticing sections like "New Arrivals" or "Editor's Picks," guiding users toward exciting literary discoveries. At the helm of the homepage sits a prominently displayed search bar, beckoning users to embark on their literary quests by effortlessly finding books by title, author, genre, or any keyword that sparks their curiosity.
 
+
+## Assignment_ID
+assignment_category_0008
+
 ## Key Features
 
 - **Authentication Options**: Users can log in or sign up using their Google or GitHub accounts, ensuring a seamless and secure authentication process.

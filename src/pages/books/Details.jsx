@@ -16,10 +16,12 @@ import { toast } from "react-toastify";
 import useAuth from "../../hooks/useAuth";
 import { useEffect } from "react";
 import Loading from "../../components/Loading";
+import { useRef } from "react";
 
 const Details = () => {
   const [book, setBook] = useState([]);
   const [loading, setLoading] = useState(true);
+  const borrowModalRef = useRef();
   const { id } = useParams();
   const { user } = useAuth();
   const { category, image, name, rating, title, long_description, _id } = book;
@@ -68,7 +70,7 @@ const Details = () => {
 
   return (
     <div className="m-4 mt-8">
-      <dialog id="borrow-modal" className="modal">
+      <dialog ref={borrowModalRef} className="modal">
         <div className="modal-box">
           <form method="dialog">
             {/* if there is a button in form, it will close the modal */}
@@ -160,9 +162,7 @@ const Details = () => {
               </div>
               <button
                 disabled={quantity < 1}
-                onClick={() =>
-                  document.getElementById("borrow-modal").showModal()
-                }
+                onClick={() => borrowModalRef.current.showModal()}
                 className="btn btn-primary mt-4 dark:bg-blue-500"
               >
                 Borrow <MdShoppingCart />

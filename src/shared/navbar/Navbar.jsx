@@ -99,7 +99,9 @@ const Navbar = () => {
           to="/"
           className="btn btn-ghost text-base font-bold md:px-4 px-0 md:text-xl"
         >
-          <span>BookWise</span>
+          <span className="flex gap-1 lg:gap-2 items-center">
+            <img className="w-[1.5em]" src="/logo.png" /> BookWise
+          </span>
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">

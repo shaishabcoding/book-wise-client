@@ -33,6 +33,40 @@ assignment_category_0008
 
 Happy reading planning with BookWise!
 
+## How to Run Locally
+
+To run this project locally on your machine, follow these steps:
+
+1. Clone the repository to your local machine using Git:
+
+```bash
+git clone https://github.com/shaishabcoding/book-wise-client.git
+```
+
+2. Navigate to the project directory:
+
+```bash
+cd book-wise-client
+```
+
+3. Install the dependencies:
+
+```bash
+npm install
+```
+
+4. Create a `.env.local` file based on `.env.local.example` and fill in the necessary environment variables.
+
+5. Start the development server:
+
+```bash
+npm run dev
+```
+
+5. Open your web browser and navigate to [http://localhost:5173](http://localhost:5173) to view the application.
+
+That's it! You now have the project running locally on your machine. Feel free to explore and make any desired modifications.
+
 ## Dependencies
 
 ### Main Dependencies
@@ -55,3 +89,11 @@ Happy reading planning with BookWise!
 - **daisyui**: "^4.11.1"
 - **tailwindcss**: "^3.4.3"
 - **vite**: "^5.2.0"
+
+```
+
+```
+
+```
+
+```

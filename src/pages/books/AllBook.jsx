@@ -42,17 +42,16 @@ const AllBook = () => {
   };
 
   const searchBooks = async (query) => {
-    try {
-      const response = await axios.get(
-        "https://book-wise-316.vercel.app/books",
-        {
-          params: { query },
-        }
-      );
-      setBooks(response.data);
-    } catch (err) {
-      console.error(err);
-    }
+    setLoading(true);
+    axios
+      .get("https://book-wise-316.vercel.app/books", {
+        params: { query },
+      })
+      .then(({ data }) => {
+        setBooks(data);
+        setAllBook(data);
+        setLoading(false);
+      });
   };
 
   const handleSelect = (suggestion) => {

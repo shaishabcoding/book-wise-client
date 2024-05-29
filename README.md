@@ -10,8 +10,8 @@ Visit the live site: [BookWise](https://book-wise-316.web.app/)
 
 BookWise offers a virtual haven for book enthusiasts, where the homepage greets visitors with an inviting array of literary wonders. Here, vibrant images of bestsellers, classic novels, and niche reads adorn the screen, alongside enticing sections like "New Arrivals" or "Editor's Picks," guiding users toward exciting literary discoveries. At the helm of the homepage sits a prominently displayed search bar, beckoning users to embark on their literary quests by effortlessly finding books by title, author, genre, or any keyword that sparks their curiosity.
 
-
 ## Assignment_ID
+
 assignment_category_0008
 
 ## Key Features
@@ -23,6 +23,7 @@ assignment_category_0008
 - **Personalized Viewing Experience**: Tailor the visual experience with a dark theme option, catering to individual preferences for enhanced readability and comfort.
 - **Borrow and Return Books**: Seamlessly manage book loans and returns, facilitating smooth interactions between users and the library's resources.
 - **My Books**: Access a personalized section to view all books added by the user, providing a convenient overview of their contributions to the library.
+- **Search Functionality**: Quickly find books on the "All Book" page by title.
 
 ## Get Started
 

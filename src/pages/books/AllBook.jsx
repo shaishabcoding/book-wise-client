@@ -6,6 +6,7 @@ import { BsFillGrid3X3GapFill } from "react-icons/bs";
 import { FaTableList } from "react-icons/fa6";
 import BookTable from "./components/BookTable";
 import { Link } from "react-router-dom";
+import Autocomplete from "./components/Autocomplete";
 
 const AllBook = () => {
   const [books, setBooks] = useState([]);
@@ -40,12 +41,31 @@ const AllBook = () => {
     setIsCardView(false);
   };
 
+  const searchBooks = async (query) => {
+    try {
+      const response = await axios.get(
+        "https://book-wise-316.vercel.app/books",
+        {
+          params: { query },
+        }
+      );
+      setBooks(response.data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const handleSelect = (suggestion) => {
+    searchBooks(suggestion);
+  };
+
   return (
     <div className="my-8">
       <h2 className="text-xl font-bold md:text-4xl my-8 lg:my-16 text-center dark:text-white">
         All Tourists Spot
       </h2>
       <div className="text-center gap-3 flex-wrap mb-8 lg:mb-16 flex items-center justify-center">
+        <Autocomplete onSelect={handleSelect}></Autocomplete>
         {isAllShown ? (
           <button onClick={handleAllBook} className="btn btn-primary">
             Show all books
